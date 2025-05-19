@@ -34,9 +34,10 @@ public class SecuretyConfiguration {
         return http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers(HttpMethod.POST,"/api/login").permitAll();
+                    req.requestMatchers("/api/login").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/api/usuarios").permitAll();
                     req.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
-                    req.anyRequest().permitAll();
+                    req.anyRequest().authenticated();
                     //"/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**"
                 })
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)

@@ -22,9 +22,16 @@ public class SecuretyFilter extends OncePerRequestFilter {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private BlackList blackList;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var tokenJWT = getToken(request);
+        if(tokenJWT != null && blackList.isTokenBlacklisted(tokenJWT)){
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
         if(tokenJWT != null){
             var subject = tokenService.getSubject(tokenJWT);
             var user = repository.findByEmail(subject);

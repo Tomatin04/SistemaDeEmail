@@ -1,5 +1,6 @@
 package com.api.api.Model.User;
 
+import com.api.api.Infra.Securety.SecuretyConfiguration;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -30,9 +31,13 @@ public class User implements UserDetails {
     public User(CreateData data){
         this.nome = data.nome();
         this.email = data.email();
-        this.senha = data.senha();
+        this.senha = new SecuretyConfiguration().passwordEncoder().encode(data.senha());
     }
 
+    public void atualizarInformacoes(UpdateData data){
+        if(data.nome() != null){ this.nome = data.nome();}
+        if(data.senha() != null){ this.senha =new SecuretyConfiguration().passwordEncoder().encode(data.senha());}
+    }
 
 
     @Override
