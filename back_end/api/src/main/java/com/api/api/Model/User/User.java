@@ -2,6 +2,7 @@ package com.api.api.Model.User;
 
 import com.api.api.Infra.Securety.SecuretyConfiguration;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class User implements UserDetails {
     private Long id;
 
     private String nome;
+    @Email
     private String email;
     private String senha;
 

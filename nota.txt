@@ -1,0 +1,41 @@
+Envio Rascunho
+{
+    "assunto": "subject",
+    "emailDestinatario": "email",
+    "corpo": "body"
+}
+Recebimento
+"email": {
+        "emailId": 1,
+        "assunto": "subject",
+        "emailRemetente": "email",
+        "emailDestinatario": "email",
+        "corpo": "body",
+        "status": "enviado",
+        "dataEnvio": "DD-MM-YYYY"
+}
+
+"rascunho": {
+        "rascunhold": 1,
+        "assunto": "subject",
+        "emailDestinatario": "email",
+        "corpo": "body"
+    }
+
+
+RASCUNHO
+rascunhoId
+emailDestinatario
+assunto
+corpo
+emailRemetente
+
+EMAIL
+emailId
+emailDestinatario
+assunto
+corpo
+emailRemetente
+status
+dataEnvio
+isDeleted
