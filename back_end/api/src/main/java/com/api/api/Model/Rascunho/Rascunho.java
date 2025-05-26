@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 
 @Table(name = "rascunhos")
-@Entity(name = "rascunho")
+@Entity(name = "Rascunho")
 @Getter
 
 @NoArgsConstructor
@@ -14,7 +14,7 @@ import lombok.*;
 @EqualsAndHashCode(of = "rascunhoId")
 public class Rascunho {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)  @Column(name = "rascunhoId")
     private Long rascunhoId;
 
     @Email
@@ -33,6 +33,12 @@ public class Rascunho {
         this.assunto = data.assunto();
         this.corpo = data.corpo();
         this.emailRemetente = creator;
+    }
+
+    public void salvarRascunho(UpdateData data){
+        if(data.assunto() != null){this.assunto = data.assunto();}
+        if(data.corpo() != null){this.corpo = data.corpo();}
+        if(data.emailDestinatario() != null){this.emailDestinatario = data.emailDestinatario();}
     }
 
 }
