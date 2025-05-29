@@ -39,3 +39,12 @@ emailRemetente
 status
 dataEnvio
 isDeleted
+
+----------------------------------------------------------------
+
+= Validar se o rascunho existe
+= Validar se o rascunho está completo para ser enviado como e-mail
+= Não precisa saber se o destinatario existe
+= Operação de delete não existe
+= Impossivel alterar e-mail, apenas atualizar o status para lido 
+= 
