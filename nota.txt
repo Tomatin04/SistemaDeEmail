@@ -47,4 +47,22 @@ isDeleted
 = Não precisa saber se o destinatario existe
 = Operação de delete não existe
 = Impossivel alterar e-mail, apenas atualizar o status para lido 
-= 
+
+
+
+----------------------------------------------------------------
+Fluxo das Views
+
+           Logout  	 +->Visualizar Rascunho
+	      |		 |	
+Login-->Tela Principal---+->Visualizar Email
+  |			 |
+  +->Registro  		 +->Visualizar Perfil
+			 |
+			 +->Criar Rascunho/Email
+
+
+
+
+
+

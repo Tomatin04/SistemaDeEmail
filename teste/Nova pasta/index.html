@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Webmail PHP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <button id="menu-btn">☰ Menu</button>
+    <h1>Meu Webmail</h1>
+    <button id="logout-btn">Logout</button>
+  </header>
+
+  <!-- Menu lateral (expansível) -->
+  <aside id="menu-lateral" class="escondido">
+    <ul>
+      <li onclick="carregarPastas('recebidos')">📥 Caixa de Entrada</li>
+      <li onclick="carregarPastas('rascunhos')">📝 Rascunhos</li>
+    </ul>
+  </aside>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <!-- PASTAS -->
+    <section class="pastas">
+      <h2>Pastas</h2>
+      <ul>
+        <li onclick="carregarPastas('recebidos')">Caixa de Entrada</li>
+        <li onclick="carregarPastas('rascunhos')">Rascunhos</li>
+      </ul>
+    </section>
+
+    <!-- LISTA DE EMAILS -->
+    <section class="lista-emails" id="lista-emails">
+      <p>Selecione uma pasta para ver os e-mails.</p>
+    </section>
+
+    <!-- CONTEÚDO DO EMAIL -->
+    <section class="conteudo-email" id="conteudo-email">
+      <p>Selecione um e-mail para visualizar o conteúdo.</p>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>Contato: suporte@meuwebmail.com</p>
+  </footer>
+
+</body>
+</html>
