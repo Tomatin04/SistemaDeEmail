@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/rascunho")
+@RequestMapping("/api/rascunhos")
 @SecurityRequirement(name = "bearer-key")
 public class RascunhoController {
 

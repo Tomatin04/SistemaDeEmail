@@ -8,9 +8,9 @@
             <input  id="email" name="email" required>
             
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" >
+            <input type="password" id="senha" name="senha" required>
 
-            <button type="submit">Entrar</button>
+            <button type="submit" >Entrar</button>
         </form>
         <p>Não tem uma conta? <a href="/register">Cadastre-se aqui</a></p>
     </div>

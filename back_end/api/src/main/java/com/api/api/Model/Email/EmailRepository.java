@@ -19,4 +19,6 @@ public interface EmailRepository extends JpaRepository<Email, Long> {
     void setStatusLido(String status, Long id);
 
     ArrayList<Email> findAllByEmailRemetente(@NotBlank User email);
+
+    ArrayList<Email> findAllByEmailDestinatarioOrderByEmailIdDesc(@NotBlank String email);
 }

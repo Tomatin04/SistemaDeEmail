@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Pattern;
 
 public record UpdateData(
         String nome,
-        @Pattern(regexp = "\\d{8,80}")
+        @Pattern(regexp = "\\d{8,80}") @NotBlank
         String senha
 ) {
 }

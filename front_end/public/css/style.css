@@ -56,7 +56,7 @@ nav {
     position: absolute;
     top: 50px;
     left: 20px;
-    background-color: #333;
+    background-color: #0a5775;
     width: 200px;
     border-radius: 5px;
     display: none;
@@ -168,3 +168,67 @@ footer {
 .login-container a:hover {
     text-decoration: underline;
 }
+
+
+.main-main {
+  display: flex;
+  height: calc(100vh - 100px);
+  margin-top: 50px;
+}
+
+
+.pastas {
+  line-height: 2.2;  
+  height: 100%; 
+  padding: 10px;
+  padding-top: 10px;
+  overflow-y: auto;
+  width: 15%;
+  background-color: #e2e2e2;
+  border-right: 1px solid #ccc;
+}
+
+.lista-emails {
+    height: 100%; 
+    padding: 10px;
+  overflow-y: auto;
+  width: 35%;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+}
+
+.conteudo-email {
+    height: 100%; 
+    padding: 10px;
+  overflow-y: auto;
+  width: 50%;
+  background-color: #fff;
+}
+
+
+.botao {
+      padding: 5px 10px; /* Tamanho um pouco maior que o texto */
+      border: none;
+      border-radius: 8px; /* Bordas arredondadas */
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .azul {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .azul:hover {
+      background-color: #0056b3;
+    }
+
+    .cinza {
+      background-color: #c0c0c0;
+      color: #333;
+    }
+
+    .cinza:hover {
+      background-color: #a0a0a0;
+    }

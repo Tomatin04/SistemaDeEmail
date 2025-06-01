@@ -3,9 +3,7 @@ package com.api.api.Controller;
 import com.api.api.Infra.Service.EmailUtil;
 import com.api.api.Infra.Service.InformationMessage;
 import com.api.api.Infra.Service.UserUtil;
-import com.api.api.Model.Email.CreateData;
-import com.api.api.Model.Email.Email;
-import com.api.api.Model.Email.EmailRepository;
+import com.api.api.Model.Email.*;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -14,9 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/email")
+@RequestMapping("/api/emails")
 @SecurityRequirement(name = "bearer-key")
 public class EmailController {
 
@@ -54,8 +53,9 @@ public class EmailController {
 
     @GetMapping
     public ResponseEntity showAll(@RequestHeader("Authorization") String token){
-        ArrayList<Email> emails = repository.findAllByEmailRemetente(userUtil.getUserByToken(token));
-        return ResponseEntity.ok(new InformationMessage("Email salbo \n" + emails));
+        ArrayList<Email> emails = repository.findAllByEmailDestinatarioOrderByEmailIdDesc(userUtil.getUserByToken(token).getEmail());
+        ArrayList<EmailSandData> emailsSandData = (ArrayList<EmailSandData>) emails.stream().map(EmailSandData::new).collect(Collectors.toList());
+        return ResponseEntity.ok(new ShowAllData("Email Encontrado", emailsSandData));
     }
 
     @GetMapping("/{id}")

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Cadastro</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/conteudo.css">
+    <link rel="stylesheet" href="css/creditos.css">
 </head>
 <body>
 
@@ -19,6 +23,7 @@
             <nav id="menu" class="hidden">
                 <ul>
                     <li><a href="/">Home</a></li>
+                    <li><a href="/mail">Novo email</a></li>
                     <li><a href="/perfil">Perfil</a></li>
                     <li><a href="/creditos">Créditos</a></li>
                 </ul>
@@ -26,7 +31,9 @@
         <?php endif; ?>
 
         <?php if(isset($_SESSION['token'])): ?>
-            <a href="/logout" class="remover-sub-a"><button class="login-btn">Logout</button></a>
+            <form action="/logout" method="POST">
+                <a  class="remover-sub-a" me ><button class="login-btn">Logout</button></a>
+            </form>
         <?php endif;?>
     </header>
 

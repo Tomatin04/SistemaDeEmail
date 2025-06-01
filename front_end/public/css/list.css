@@ -1,0 +1,58 @@
+.lista-container {
+      width: 100%;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    .lista-container ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .lista-container li {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .lista-container h4 {
+      margin: 0 0 5px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .lista-container p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+.item-com-botao {
+  position: relative; /* importante para o posicionamento absoluto do botão funcionar */
+  padding: 20px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  list-style: none;
+  width: 100%; /* ajuste conforme necessário */
+  min-height: 80px; /* para garantir espaço para o botão */
+  background-color: #f0f0f0;
+}
+
+.botao-pequeno {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  padding: 2px 6px;
+  font-size: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.botao-pequeno:hover {
+  background-color: #218838;
+}

@@ -9,7 +9,7 @@
                     <?php unset($_SESSION['error_msg']); ?>
                 </div>
             <?php endif; ?>
-            <form action="#" method="POST">
+            <form action="" method="POST">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
                 
