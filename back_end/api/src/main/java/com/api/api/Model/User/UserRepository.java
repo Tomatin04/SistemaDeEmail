@@ -21,4 +21,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
         UPDATE USERS SET ATIVO = 0 WHERE ID = :id; 
            """, nativeQuery = true)
     int intelDeleteUser(Long id);
+
+    @Query(value = """
+            SELECT ativo FROM users WHERE email = :email
+            """, nativeQuery = true)
+    boolean isUserActive(String email);
 }

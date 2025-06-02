@@ -27,4 +27,8 @@ public class UserUtil {
         Long id = tokenService.getIdFromToken(clearToken);
         return id;
     }
+
+    public Boolean userValid(String email){
+        return userRepository.isUserActive(email);
+    }
 }

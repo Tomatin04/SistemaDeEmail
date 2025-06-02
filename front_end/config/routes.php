@@ -17,5 +17,6 @@ return [
     'POST|/sand' => \App\Controllers\SandController::class,
     'GET|/EmailList' => \App\service\EmailList::class,
     'GET|/Detalhes' => \App\service\Detalhes::class,
+    'POST|/DeleteUser' => \App\service\DeleteUser::class,
 
 ]; 

@@ -52,6 +52,6 @@ public class UserController {
     @Transactional
     public ResponseEntity delete (@RequestHeader("Authorization")  String token){
         repository.intelDeleteUser(userUtil.getIdFromToken(token));
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new InformationMessage("Sucesso ao excluir usuário"));
     }
 }

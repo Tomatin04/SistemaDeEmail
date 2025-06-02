@@ -32,23 +32,23 @@ public class EmailController {
     @Transactional
     public ResponseEntity create (@RequestBody @Valid CreateData data, @RequestHeader("Authorization")  String token){
         var email = new Email(data, userUtil.getUserByToken(token));
-        email = repository.save(email);
-        return ResponseEntity.ok(new InformationMessage("Email salbo \n" + email));
+        var mail = repository.save(email);
+        return ResponseEntity.ok(new ShowData("Email enviado com sucesso", new OneData(mail)));
     }
 
     @PostMapping("/{id}")
     @Transactional
     public ResponseEntity createWhitId(@PathVariable Long id, @RequestHeader("Authorization") String token){
         var email = emailUtil.createEmailByRascunho(id);
-        email = repository.save(email);
-        return ResponseEntity.ok(new InformationMessage("Email salbo \n" + email));
+        var mail = repository.save(email);
+        return ResponseEntity.ok(new ShowData("Email enviado com sucesso", new OneData(mail)));
     }
 
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity update(@PathVariable Long id, @RequestHeader("Authorization") String token){
         var email = emailUtil.readEmail(id);
-        return ResponseEntity.ok(new InformationMessage("Email salbo \n" + email));
+        return ResponseEntity.ok(new ShowData("Email marcado como lido", new OneData(email)));
     }
 
     @GetMapping

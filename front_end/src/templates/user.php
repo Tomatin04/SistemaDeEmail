@@ -12,7 +12,7 @@
 
             <p><strong>Email:</strong><?php echo $usuario['email']?></p>
         </div>
-        
+
         <div class="password-section">
             <input type="password" id="password" placeholder="" name="senha" disabled>
         </div>
@@ -20,26 +20,26 @@
         <div class="submit-section">
             <button id="submit-button" style="display: none;" type="submit">Enviar Dados</button>
         </div>
-        </form>
-        <div class="password-section">
-            <button id="unlock-password-button" >Alterar Informações</button>
-        </div>
-    
-    <button id="delete-account-button" class="delete-button">X</button>
+    </form>
+    <div class="password-section">
+        <button id="unlock-password-button">Alterar Informações</button>
+    </div>
+
+    <form action="/logout" method="POST">
+        <button type="submit" id="delete-account-button" class="delete-button"> X </button>
+    </form>
 </div>
 <script>
-    const usernameInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
-    const unlockPasswordButton = document.getElementById('unlock-password-button');
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+const unlockPasswordButton = document.getElementById('unlock-password-button');
 
-    const submitButton = document.getElementById('submit-button');
-
-
-    unlockPasswordButton.addEventListener('click', () => {
-        passwordInput.disabled = false;
-        usernameInput.disabled = false;
-        submitButton.style.display = 'inline-block'; 
-    });
+const submitButton = document.getElementById('submit-button');
 
 
+unlockPasswordButton.addEventListener('click', () => {
+    passwordInput.disabled = false;
+    usernameInput.disabled = false;
+    submitButton.style.display = 'inline-block';
+});
 </script>

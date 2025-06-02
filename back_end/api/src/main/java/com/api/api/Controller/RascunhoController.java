@@ -31,8 +31,8 @@ public class RascunhoController {
     @Transactional
     public ResponseEntity create (@RequestBody @Valid CreateData data, @RequestHeader("Authorization")  String token){
         var rascunho = new Rascunho(data, userUtil.getUserByToken(token));
-        repository.save(rascunho);
-        return ResponseEntity.ok(new InformationMessage("Rascunho criado com sucesso"));
+        var ras = repository.save(rascunho);
+        return ResponseEntity.ok(new ShowData("Rascunho criado", new OneData(ras)));
     }
 
     @PutMapping
@@ -40,19 +40,19 @@ public class RascunhoController {
     public ResponseEntity update (@RequestBody @Valid UpdateData data, @RequestHeader("Authorization")  String token){
         var rascunho = repository.findByRascunhoId(data.rascunhoId());
         rascunho.salvarRascunho(data);
-        return ResponseEntity.ok(new InformationMessage("Rascunho salvo com sucesso com sucesso"));
+        return ResponseEntity.ok(new ShowData("Rascunho salvo com sucesso com sucesso", new OneData(rascunho)));
     }
 
     @GetMapping("/{rascunhoId}")
     public ResponseEntity get(@PathVariable Long rascunhoId, @RequestHeader("Authorization")  String token){
         var rascunho = repository.findByRascunhoId(rascunhoId);
-        return ResponseEntity.ok(new ShowData("Rascunho encontrado", new OneData(rascunho)));
+        return ResponseEntity.ok(new ShowData("Rascunho localizado", new OneData(rascunho)));
     }
 
     @GetMapping()
     public ResponseEntity show(@RequestHeader("Authorization")  String token){
        ArrayList<OneData> rascunhos =  repository.findAllByEmailRemetente(userUtil.getUserByToken(token));
-       return ResponseEntity.ok(new ShowAllData("Rascunhos localizados", rascunhos));
+       return ResponseEntity.ok(new ShowAllData("Rascunho localizado", rascunhos));
        //return null;
     }
 
@@ -60,7 +60,7 @@ public class RascunhoController {
     @Transactional
     public ResponseEntity delete(@PathVariable Long rascunhoId, @RequestHeader("Authorization")  String token){
         repository.deleteByRascunhoId(rascunhoId);
-        return ResponseEntity.ok(new InformationMessage("Rascunho excluido com sucesso"));
+        return ResponseEntity.ok(new InformationMessage("Rascunho deletado com sucesso"));
     }
 
 }

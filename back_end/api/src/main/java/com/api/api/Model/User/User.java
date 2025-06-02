@@ -1,12 +1,14 @@
 package com.api.api.Model.User;
 
 import com.api.api.Infra.Securety.SecuretyConfiguration;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.jackson.Jacksonized;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,10 +33,14 @@ public class User implements UserDetails {
     private String email;
     private String senha;
 
+    @JsonBackReference
+    private Boolean ativo;
+
     public User(CreateData data){
         this.nome = data.nome();
         this.email = data.email();
         this.senha = new SecuretyConfiguration().passwordEncoder().encode(data.senha());
+        this.ativo = true;
     }
 
     public void atualizarInformacoes(UpdateData data){
