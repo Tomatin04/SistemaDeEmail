@@ -16,12 +16,12 @@ class Detalhes implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        //id option
 
         $id = $_GET['id'];
         
         foreach($_SESSION['itens'] as $item){
             if((int)$item['id'] == $id){
+                
                 return new Response(200, body: $this->templates->render('mailView', ['item' => $item]));
             }
         }

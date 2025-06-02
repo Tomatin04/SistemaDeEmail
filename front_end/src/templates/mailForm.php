@@ -9,7 +9,7 @@
 
     <div class="form-group">
         <label class="form-label" for="destinatario">Destinatario:</label>
-        <input type="text" id="destinatario" name="destinatario" class="form-input" placeholder="Digite o destinatario" value="<?= $rascunho['emailDestinatario'] ?>">
+        <input type="email" type="text" id="destinatario" name="destinatario" class="form-input" placeholder="Digite o destinatario" value="<?= $rascunho['emailDestinatario'] ?>">
     </div>
 
     <div class="form-group">

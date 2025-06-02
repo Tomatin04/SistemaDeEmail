@@ -5,7 +5,7 @@
         <h2>Entrar</h2>
         <form action="#" method="POST">
             <label for="email">E-mail:</label>
-            <input  id="email" name="email" required>
+            <input  type="email" id="email" name="email" required>
             
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" required>

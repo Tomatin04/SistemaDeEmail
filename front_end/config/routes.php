@@ -12,6 +12,7 @@ return [
     'GET|/perfil' => \App\controllers\FormsControllers\FormUser::class,
     'POST|/perfil' => \App\controllers\UserController::class,
     'GET|/mail' => \App\Controllers\FormsControllers\FormEmail::class,
+    'POST|/mail' => \App\Controllers\MailController::class,
     'GET|/creditos' => \App\Controllers\FormsControllers\FormCreditos::class,
     'POST|/sand' => \App\Controllers\SandController::class,
     'GET|/EmailList' => \App\service\EmailList::class,
