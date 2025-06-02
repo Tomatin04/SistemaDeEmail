@@ -10,7 +10,9 @@ public record CreateData(
         String nome,
         @NotBlank @Email
         String email,
-        @NotNull @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{9,}$")
+        @NotNull
         String senha
 ) {
 }
+
+//@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{9,}$")

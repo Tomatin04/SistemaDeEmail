@@ -27,7 +27,8 @@ class LoginController implements RequestHandlerInterface
 
         $response = (new EndPointsRequest())->requestPost('login', json_encode($data));
 
-        if($response != null){
+    
+        if($_SESSION['statusHTTP'] == 200){
             $_SESSION['token'] = $response;
             return new Response(200, ['Location' => '/']);
         }else{

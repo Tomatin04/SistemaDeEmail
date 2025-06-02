@@ -33,11 +33,11 @@ class EndPointsRequest
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        
-        
 
         $response = curl_exec($ch);
         
+        $_SESSION['statusHTTP'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
         return json_decode($response, true);
@@ -63,6 +63,9 @@ class EndPointsRequest
         
 
         $response = curl_exec($ch);
+
+        $_SESSION['statusHTTP'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
         return json_decode($response, true);
@@ -87,6 +90,9 @@ class EndPointsRequest
 
 
         $response = curl_exec($ch);
+
+        $_SESSION['statusHTTP'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
         return json_decode($response, true);
@@ -110,6 +116,9 @@ class EndPointsRequest
 
 
         $response = curl_exec($ch);
+
+        $_SESSION['statusHTTP'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
         return json_decode($response, true);
@@ -131,6 +140,9 @@ class EndPointsRequest
 
 
         $response = curl_exec($ch);
+
+        $_SESSION['statusHTTP'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
         return json_decode($response, true);
@@ -153,6 +165,9 @@ class EndPointsRequest
 
 
         $response = curl_exec($ch);
+
+        $_SESSION['statusHTTP'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
         return json_decode($response, true);

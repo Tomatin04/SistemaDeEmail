@@ -33,7 +33,7 @@ class RegisterController implements RequestHandlerInterface
 
         $response = (new EndPointsRequest())->requestPost('usuarios', json_encode($data));
 
-        if($response != null){
+        if($_SESSION['statusHTTP'] == 200){
             return new Response(200, ['Location' => '/']);
         }
 

@@ -27,7 +27,7 @@ class UserController implements RequestHandlerInterface
 
         $response = (new EndPointsRequest())->requestPut('usuarios', json_encode($data));
 
-        if($response != null){
+        if($_SESSION['statusHTTP'] == 200){
             return new Response(200, ['Location' => '/perfil']);
         }
 

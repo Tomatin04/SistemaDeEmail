@@ -31,12 +31,13 @@ public class AuthenticationController {
     private UserUtil userUtil;
 
     @PostMapping
-    public ResponseEntity login(@RequestBody @Valid AuthenticationData data){
+    public ResponseEntity login(@RequestBody  AuthenticationData data){
         if(!userUtil.userValid(data.email())) return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-
+        System.out.println(data.email() + " " + data.senha());
         var authToken = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
         var auth = authenticationManager.authenticate(authToken);
         var tokenJWT = tokenService.generateToken((User) auth.getPrincipal());
+
 
         return ResponseEntity.ok(new TokenJWTData(tokenJWT));
     }

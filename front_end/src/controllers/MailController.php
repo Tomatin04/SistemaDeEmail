@@ -23,7 +23,7 @@ class MailController implements RequestHandlerInterface
 
         $response = (new EndPointsRequest())->requestPutId('emails', $id);
 
-        if($response != null){
+        if($_SESSION['statusHTTP'] == 200){
             return new Response(200, ["Location" => '/']);
         }
         return new Response(401);

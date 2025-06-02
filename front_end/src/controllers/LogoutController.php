@@ -21,13 +21,15 @@ class LogoutController implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $response = (new EndPointsRequest())->requestPost('logout');
-        if($response != null){
+        if($_SESSION['statusHTTP'] == 200){
             session_destroy();
             $_SESSION['token'] = null;
+            $_SESSION['statusHTTP'] = null;
             return new  Response(200, ['Location' => '/login']);
         }else{
             session_destroy();
             $_SESSION['token'] = null;
+            $_SESSION['statusHTTP'] = null;
             return new Response(403, ['Location' => '/login']);
         }
         
