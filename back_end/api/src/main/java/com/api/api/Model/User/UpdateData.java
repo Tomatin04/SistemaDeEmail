@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Pattern;
 
 public record UpdateData(
         String nome,
-        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{9,}$\n") @NotBlank
+        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{9,}$") @NotBlank
         String senha
 ) {
 }

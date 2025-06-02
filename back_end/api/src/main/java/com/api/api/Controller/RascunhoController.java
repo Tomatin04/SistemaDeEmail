@@ -29,7 +29,7 @@ public class RascunhoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity create (@RequestBody @Valid CreateData data, @RequestHeader("Authorization")  String token){
+    public ResponseEntity create (@RequestBody  CreateData data, @RequestHeader("Authorization")  String token){
         var rascunho = new Rascunho(data, userUtil.getUserByToken(token));
         var ras = repository.save(rascunho);
         return ResponseEntity.ok(new ShowData("Rascunho criado", new OneData(ras)));
