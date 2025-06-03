@@ -27,10 +27,7 @@ class LogoutController implements RequestHandlerInterface
             $_SESSION['statusHTTP'] = null;
             return new  Response(200, ['Location' => '/login']);
         }else{
-            session_destroy();
-            $_SESSION['token'] = null;
-            $_SESSION['statusHTTP'] = null;
-            return new Response(403, ['Location' => '/login']);
+            return new Response(403, ['Location' => '/']);
         }
         
     }

@@ -9,6 +9,7 @@ return [
     'GET|/register' => \App\Controllers\FormsControllers\FormRegister::class,
     'POST|/register' => \App\Controllers\RegisterController::class,
     'POST|/logout' => \App\controllers\LogoutController::class,
+    'GET|/timeOut' => \App\service\TimeOut::class,
     'GET|/perfil' => \App\controllers\FormsControllers\FormUser::class,
     'POST|/perfil' => \App\controllers\UserController::class,
     'GET|/mail' => \App\Controllers\FormsControllers\FormEmail::class,
