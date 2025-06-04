@@ -28,8 +28,7 @@ public class UserController {
     @PostMapping
     @Transactional
     public ResponseEntity create(@RequestBody @Valid CreateData data, UriComponentsBuilder uriComponentsBuilder){
-        var user = new User(data);
-        System.out.println(data.email() + " " + data.senha());
+        var user = userUtil.checkInfoNewUser(data);
         repository.save(user);
         var uri = uriComponentsBuilder.path("api/usuarios/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).body(new InformationMessage("Sucesso ao criar o usuário"));

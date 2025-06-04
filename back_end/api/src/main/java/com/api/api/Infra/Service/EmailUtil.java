@@ -26,4 +26,8 @@ public class EmailUtil {
         emailRepository.setStatusLido(Status.LIDO.toString(), id);
         return emailRepository.getReferenceById(id);
     }
+
+    public Email findEmailToRead(){
+        if()
+    }
 }

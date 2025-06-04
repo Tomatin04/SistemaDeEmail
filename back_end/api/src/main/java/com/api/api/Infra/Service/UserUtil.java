@@ -1,6 +1,8 @@
 package com.api.api.Infra.Service;
 
+import com.api.api.Infra.Exception.UserException.UserExistException;
 import com.api.api.Infra.Securety.TokenService;
+import com.api.api.Model.User.CreateData;
 import com.api.api.Model.User.User;
 import com.api.api.Model.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +32,10 @@ public class UserUtil {
 
     public Boolean userValid(String email){
         return userRepository.isUserActive(email);
+    }
+
+    public User checkInfoNewUser(CreateData data){
+        if(userRepository.findByEmail(data.email()) != null) throw new UserExistException("Usuario já cacastrado com esse e-mail");
+        return new User(data);
     }
 }

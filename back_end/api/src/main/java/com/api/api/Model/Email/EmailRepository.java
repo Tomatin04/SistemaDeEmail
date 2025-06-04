@@ -21,4 +21,6 @@ public interface EmailRepository extends JpaRepository<Email, Long> {
     ArrayList<Email> findAllByEmailRemetente(@NotBlank User email);
 
     ArrayList<Email> findAllByEmailDestinatarioOrderByEmailIdDesc(@NotBlank String email);
+
+    Email 
 }
