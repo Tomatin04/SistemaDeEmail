@@ -34,6 +34,8 @@ class SandController implements RequestHandlerInterface
         ];
 
         
+
+        
         if($option == 'excluir'){
             (new EndPointsRequest())->requestDeleteId('rascunhos', (int)$deleteValue);
             return new Response(200, ['Location' => '/']);
@@ -46,6 +48,7 @@ class SandController implements RequestHandlerInterface
             }  
         }else if($option != 0){
             if($assunto != null || $destinatario != null || $corpo != null){
+              
                 (new EndPointsRequest())->requestPut('rascunhos', json_encode($data));
                 return new Response(200, ['Location' => '/']);
             }else{
@@ -53,6 +56,7 @@ class SandController implements RequestHandlerInterface
             } 
         }else{
             if($assunto != null || $destinatario != null || $corpo != null){
+                
                 (new EndPointsRequest())->requestPost('rascunhos', json_encode($data));
                 return new Response(200, ['Location' => '/']);
             }else{

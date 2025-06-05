@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface EmailRepository extends JpaRepository<Email, Long> {
 
     @Transactional
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query(value = """
             UPDATE emails SET status = :status WHERE email_id = :id
             """, nativeQuery = true)
@@ -22,5 +22,6 @@ public interface EmailRepository extends JpaRepository<Email, Long> {
 
     ArrayList<Email> findAllByEmailDestinatarioOrderByEmailIdDesc(@NotBlank String email);
 
-    Email 
+    @Transactional
+    Email findEmailByEmailId(@NotBlank  Long id);
 }

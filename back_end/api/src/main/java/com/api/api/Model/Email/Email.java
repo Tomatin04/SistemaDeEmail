@@ -27,6 +27,7 @@ public class Email {
     private Long emailId;
 
     private String assunto;
+    @Lob
     private String corpo;
     private String emailDestinatario;
 

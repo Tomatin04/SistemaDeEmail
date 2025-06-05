@@ -1,7 +1,10 @@
 package com.api.api.Controller;
 
+import com.api.api.Infra.Exception.EmailException.EmailNotFind;
 import com.api.api.Infra.Exception.UserException.UserExistException;
 import com.api.api.Infra.Service.InformationMessage;
+import jakarta.persistence.PersistenceException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -27,6 +30,21 @@ public class GlobalExceptionController {
     @ExceptionHandler(UserExistException.class)
     public ResponseEntity handleUserExist(UserExistException ex){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new InformationMessage("Não foi possivel cadastrar o usuário"));
+    }
+
+    @ExceptionHandler(EmailNotFind.class)
+    public ResponseEntity handleEmailNotFind(EmailNotFind ex){
+        return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(new InformationMessage("Email não encontrado"));
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    public ResponseEntity handleDataAccessException(DataAccessException ex){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new InformationMessage("ERRO INTERNO RELACIONADO AO ACESSO AO BD"));
+    }
+
+    @ExceptionHandler(PersistenceException.class)
+    public ResponseEntity handlePersistenceException(PersistenceException ex){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new InformationMessage("ERRO DE PERSISTENCIA"));
     }
 
 }

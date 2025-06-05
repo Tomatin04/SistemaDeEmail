@@ -1,0 +1,2 @@
+ALTER TABLE rascunhos
+MODIFY corpo LONGTEXT;

@@ -21,9 +21,11 @@ public class Rascunho {
     private String emailDestinatario;
 
     private String assunto;
+
+    @Lob
     private String corpo;
 
-    @Email
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "emailRemetente", referencedColumnName = "email")
     private User emailRemetente;

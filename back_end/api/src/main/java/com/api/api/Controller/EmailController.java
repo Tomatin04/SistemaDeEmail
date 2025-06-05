@@ -44,12 +44,14 @@ public class EmailController {
         return ResponseEntity.ok(new ShowData("Email enviado com sucesso", new OneData(mail)));
     }
 
+    /*
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity update(@PathVariable Long id, @RequestHeader("Authorization") String token){
-        var email = emailUtil.readEmail(id);
+        var email = emailUtil.findEmailToRead(id);
         return ResponseEntity.ok(new ShowData("Email marcado como lido", new OneData(email)));
     }
+     */
 
     @GetMapping
     public ResponseEntity showAll(@RequestHeader("Authorization") String token){
@@ -60,7 +62,7 @@ public class EmailController {
 
     @GetMapping("/{id}")
     public  ResponseEntity show(@PathVariable Long id,@RequestHeader("Authorization") String token){
-        var email = repository.findById(id);
-        return ResponseEntity.ok(email);
+        var email = emailUtil.findEmailToRead(id);
+        return ResponseEntity.ok(new ShowData("Email marcado como lido", new OneData(email)));
     }
 }

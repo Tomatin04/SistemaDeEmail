@@ -9,11 +9,14 @@
                 <button class="botao-pequeno" name='id' value="<?= $item['id'] ?>">ALTERA RASCUNHO</button>
             </form>
             <?php else: ?>
+           
+
             <form action="/mail" method="POST">
                 <p><?= $item['emailRemetente'] ?></p>
                 <input type="hidden" name="id" value="<?= $item['id'] ?>">
                 <button class="botao-pequeno02" ?>MARCAR COMO LIDO</button>
             </form>
+            <a href="/responder?id=<?= $item['id'] ?>"><button class="botao-pequeno03">RESPONDER</button></a>
             <?php endif;?>
         </li>
         <?php endforeach; ?>

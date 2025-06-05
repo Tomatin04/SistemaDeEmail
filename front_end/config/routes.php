@@ -19,5 +19,5 @@ return [
     'GET|/EmailList' => \App\service\EmailList::class,
     'GET|/Detalhes' => \App\service\Detalhes::class,
     'POST|/DeleteUser' => \App\service\DeleteUser::class,
-
+    'GET|/responder' => \App\Controllers\FormsControllers\FormResponse::class,
 ]; 
