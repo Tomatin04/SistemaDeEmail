@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+ini_set('display_errors', '0');
+session_start();
+session_regenerate_id();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -8,13 +12,13 @@ $routes = require_once __DIR__ . '/../config/routes.php';
 /** @var \Psr\Container\ContainerInterface $diContainer */
 $diContainer = require_once __DIR__ . '/../config/dependecies.php';
 
-$pathInfo = $_SERVER['PATH_INFO'] ?? '/';
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$pathInfo = rtrim($uri, '/') ?: '/';
+
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 
 
-session_start();
-session_regenerate_id();
 
 
 //is_null($_SESSION['token'])
@@ -22,7 +26,7 @@ $isLoginRoute = $pathInfo === '/login';
 $isRegisterRoute = $pathInfo === '/register';
 if ( !array_key_exists('token', $_SESSION) && !$isLoginRoute && !$isRegisterRoute) {
     header('Location: /login');
-    return;
+    exit;
 }
 
 $key = "$httpMethod|$pathInfo";
@@ -32,6 +36,7 @@ if (array_key_exists($key, $routes)) {
     $controller = $diContainer->get($controllerClass);
 } else {
     //$controller = new Error404Controller();
+    exit;
 }
 
 $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();

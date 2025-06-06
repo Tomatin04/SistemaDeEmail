@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$location = 'http://localhost:8090/api';
+$location = 'http://10.100.122.170:8081/api';
 
 return [
     'login' => $location . '/login',
