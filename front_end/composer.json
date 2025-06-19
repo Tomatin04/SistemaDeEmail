@@ -13,6 +13,7 @@
         "ext-fileinfo": "*",
         "psr/http-server-handler": "^1.0",
         "php-di/php-di": "^6.4",
-        "league/plates": "^3.4"
+        "league/plates": "^3.4",
+        "vlucas/phpdotenv": "^5.6"
     }
 }

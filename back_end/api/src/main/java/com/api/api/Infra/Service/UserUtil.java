@@ -1,5 +1,6 @@
 package com.api.api.Infra.Service;
 
+import com.api.api.Infra.Exception.EmailException.EmailNotFind;
 import com.api.api.Infra.Exception.UserException.UserExistException;
 import com.api.api.Infra.Securety.TokenService;
 import com.api.api.Model.User.CreateData;
@@ -31,11 +32,14 @@ public class UserUtil {
     }
 
     public Boolean userValid(String email){
-        return userRepository.isUserActive(email);
+        if(userRepository.findByEmail(email) != null)return userRepository.isUserActive(email);
+        throw new EmailNotFind("Email não registrado");
     }
 
     public User checkInfoNewUser(CreateData data){
         if(userRepository.findByEmail(data.email()) != null) throw new UserExistException("Usuario já cacastrado com esse e-mail");
         return new User(data);
     }
+
+
 }

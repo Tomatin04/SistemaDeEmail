@@ -7,7 +7,9 @@ import jakarta.persistence.PersistenceException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -45,6 +47,16 @@ public class GlobalExceptionController {
     @ExceptionHandler(PersistenceException.class)
     public ResponseEntity handlePersistenceException(PersistenceException ex){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new InformationMessage("ERRO DE PERSISTENCIA"));
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity handleAuthenticationException(AuthenticationException ex){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new InformationMessage("Credenciais Incorretas"));
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity handleMethodArgumentNotValidException(MethodArgumentNotValidException ex){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new InformationMessage("Campos invalidos"));
     }
 
 }

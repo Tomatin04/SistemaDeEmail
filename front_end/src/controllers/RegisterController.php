@@ -33,10 +33,10 @@ class RegisterController implements RequestHandlerInterface
 
         $response = (new EndPointsRequest())->requestPost('usuarios', json_encode($data));
 
-        if($_SESSION['statusHTTP'] == 200){
+        if($_SESSION['statusHTTP'] == 201){
             return new Response(200, ['Location' => '/']);
         }
 
-        return new Response(400, ['Location' => '/login']);
+        return new Response(400, body: $this->templates->render('register'));
     }
 }

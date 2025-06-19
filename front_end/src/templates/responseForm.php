@@ -10,8 +10,8 @@
 
     <div class="form-group">
         <label class="form-label" for="destinatario">Destinatario:</label>
-        <input type="hidden" name="destinatario" value="<?= $email['emailDestinatario'] ?>">
-        <input type="email" type="text"  class="form-input"  value="<?= $email['emailDestinatario'] ?>" disabled>
+        <input type="hidden" name="destinatario" value="<?= $email['emailRemetente'] ?>">
+        <input type="email" type="text"  class="form-input"  value="<?= $email['emailRemetente'] ?>" disabled>
     </div>
 
     <div class="form-group">

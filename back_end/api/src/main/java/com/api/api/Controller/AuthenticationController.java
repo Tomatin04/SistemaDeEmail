@@ -2,6 +2,7 @@ package com.api.api.Controller;
 
 import com.api.api.Infra.Securety.TokenJWTData;
 import com.api.api.Infra.Securety.TokenService;
+import com.api.api.Infra.Service.InformationMessage;
 import com.api.api.Infra.Service.UserUtil;
 import com.api.api.Model.User.AuthenticationData;
 import com.api.api.Model.User.User;
@@ -32,7 +33,7 @@ public class AuthenticationController {
 
     @PostMapping
     public ResponseEntity login(@RequestBody  AuthenticationData data){
-        if(!userUtil.userValid(data.email())) return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        if(!userUtil.userValid(data.email())) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new InformationMessage("Credenciais incorretas"));
         System.out.println(data.email() + " " + data.senha());
         var authToken = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
         var auth = authenticationManager.authenticate(authToken);

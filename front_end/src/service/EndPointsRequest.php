@@ -40,6 +40,7 @@ class EndPointsRequest
 
         curl_close($ch);
 
+        file_put_contents('php://stderr', $response . '  HttpStatus: ' . $_SESSION['statusHTTP'] . PHP_EOL);
         return json_decode($response, true);
     }
 
@@ -68,6 +69,7 @@ class EndPointsRequest
 
         curl_close($ch);
 
+        file_put_contents('php://stderr', $response . '  HttpStatus: ' . $_SESSION['statusHTTP'] . PHP_EOL);
         return json_decode($response, true);
     }
 
@@ -95,6 +97,7 @@ class EndPointsRequest
 
         curl_close($ch);
 
+        file_put_contents('php://stderr', $response . '  HttpStatus: ' . $_SESSION['statusHTTP'] . PHP_EOL);
         return json_decode($response, true);
     }
 
@@ -121,6 +124,7 @@ class EndPointsRequest
 
         curl_close($ch);
 
+        file_put_contents('php://stderr', $response . '  HttpStatus: ' . $_SESSION['statusHTTP'] . PHP_EOL);
         return json_decode($response, true);
     }
 
@@ -145,6 +149,7 @@ class EndPointsRequest
 
         curl_close($ch);
 
+        file_put_contents('php://stderr', $response . '  HttpStatus: ' . $_SESSION['statusHTTP'] . PHP_EOL);
         return json_decode($response, true);
     }
 
@@ -170,6 +175,36 @@ class EndPointsRequest
 
         curl_close($ch);
 
+        file_put_contents('php://stderr', $response . '  HttpStatus: ' . $_SESSION['statusHTTP'] . PHP_EOL);
+        return json_decode($response, true);
+    }
+
+    public function requestPostId(String $endpoint, String $data, String $id)
+    {
+        $ch = curl_init($this->endpoints[$endpoint] . '/' . $id);
+        
+        $header = [
+            'Accept: application/json',
+            'Content-Type: application/json',
+        ];
+
+        if (isset($_SESSION['token'])) $header[] = 'Authorization: Bearer ' . $_SESSION['token']['token'];
+        
+
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        if($data != null)curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        
+
+        $response = curl_exec($ch);
+
+        $_SESSION['statusHTTP'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close($ch);
+
+        file_put_contents('php://stderr', $response . '  HttpStatus: ' . $_SESSION['statusHTTP'] . PHP_EOL);
         return json_decode($response, true);
     }
 }

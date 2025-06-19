@@ -25,7 +25,7 @@
         <button id="unlock-password-button">Alterar Informações</button>
     </div>
 
-    <form action="/logout" method="POST">
+    <form action="/DeleteUser" method="POST">
         <button type="submit" id="delete-account-button" class="delete-button"> X </button>
     </form>
 </div>

@@ -35,10 +35,11 @@ public class RascunhoController {
         return ResponseEntity.ok(new ShowData("Rascunho criado", new OneData(ras)));
     }
 
-    @PutMapping
+    @PutMapping("/{rascungoId}")
     @Transactional
-    public ResponseEntity update (@RequestBody @Valid UpdateData data, @RequestHeader("Authorization")  String token){
-        var rascunho = repository.findByRascunhoId(data.rascunhoId());
+    public ResponseEntity update (@PathVariable Long rascungoId, @RequestBody @Valid UpdateData data, @RequestHeader("Authorization")  String token){
+
+        var rascunho = repository.findByRascunhoId(rascungoId);
         rascunho.salvarRascunho(data);
         return ResponseEntity.ok(new ShowData("Rascunho salvo com sucesso com sucesso", new OneData(rascunho)));
     }

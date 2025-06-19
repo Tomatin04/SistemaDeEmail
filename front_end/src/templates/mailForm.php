@@ -25,7 +25,8 @@
             <a href="/" ><button type="button" class="btn btn-cancelar">CANCELAR</button></a>
         <?php endif; ?>
         <div>
-            <button type="submit" class="btn btn-salvar" name='option' value="<?= $rascunho['id'] ?? 0?>">SALVAR</button>
+            <input type="hidden" name="rascunhoId" value="<?= $rascunho['id'] ?? 0?>">
+            <button type="submit" class="btn btn-salvar" name='option' value="salvar">SALVAR</button>
             <button type="submit" class="btn btn-enviar" name='option' value="enviar">ENVIAR</button>
         </div>
     </div>

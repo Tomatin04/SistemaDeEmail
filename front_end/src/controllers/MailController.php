@@ -21,7 +21,7 @@ class MailController implements RequestHandlerInterface
     {
         $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
-        $response = (new EndPointsRequest())->requestGet('emails', $id);
+        $response = (new EndPointsRequest())->requestPutId('emails', $id);
 
         if($_SESSION['statusHTTP'] == 200){
             return new Response(200, ["Location" => '/']);
