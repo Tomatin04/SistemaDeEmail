@@ -30,7 +30,6 @@ class UserController implements RequestHandlerInterface
         if($_SESSION['statusHTTP'] == 200){
             return new Response(200, ['Location' => '/perfil']);
         }
-
         return new Response(401, ['Location' => '/perfil']);
     }
 }

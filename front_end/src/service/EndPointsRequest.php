@@ -156,6 +156,7 @@ class EndPointsRequest
     public function requestPutId(String $endpoint, int $id, String $data = null)
     {
         $ch = curl_init($this->endpoints[$endpoint] . '/' . $id);
+        
         $header = [
             'Accept: application/json',
             'Content-Type: application/json',
@@ -165,7 +166,7 @@ class EndPointsRequest
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        //if($data != null)curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        if($data != null)curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 
 

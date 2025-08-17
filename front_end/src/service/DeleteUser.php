@@ -23,6 +23,6 @@ class DeleteUser implements RequestHandlerInterface
             $_SESSION['token'] = null;
             return new Response(200, ['Location' => '/login']);
         }
-        return new Response(4001, ['Location' => '/']);
+        return new Response(401, ['Location' => '/']);
     }
 }

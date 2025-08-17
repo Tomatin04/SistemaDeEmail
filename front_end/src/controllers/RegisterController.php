@@ -36,7 +36,6 @@ class RegisterController implements RequestHandlerInterface
         if($_SESSION['statusHTTP'] == 201){
             return new Response(200, ['Location' => '/']);
         }
-
         return new Response(400, body: $this->templates->render('register'));
     }
 }

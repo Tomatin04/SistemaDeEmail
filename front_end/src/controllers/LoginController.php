@@ -32,7 +32,7 @@ class LoginController implements RequestHandlerInterface
             $_SESSION['token'] = $response;
             return new Response(200, ['Location' => '/']);
         }else{
-            return new Response(403, body: $this->templates->render('login'));
+            return new Response(403, ['Location' => '/login']);
         }
         
     }

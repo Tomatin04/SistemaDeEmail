@@ -45,6 +45,7 @@
         <p>Contato: <a href="mailto:contato@exemplo.com">contato@exemplo.com</a> | Telefone: (11) 1234-5678</p>
     </footer>
     <script>
+       
     let tempoInatividade = 3 * 60 * 60 * 1000; // 5 minutos
     let timer;
 

@@ -21,11 +21,11 @@ class MailController implements RequestHandlerInterface
     {
         $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
-        $response = (new EndPointsRequest())->requestPutId('emails', $id);
+        $response = (new EndPointsRequest())->requestGet('emails', $id);
 
         if($_SESSION['statusHTTP'] == 200){
             return new Response(200, ["Location" => '/']);
         }
-        return new Response(401);
+        return new Response(401, ["Location" => '/']);
     }
 }

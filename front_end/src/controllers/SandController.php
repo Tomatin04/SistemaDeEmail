@@ -60,14 +60,14 @@ class SandController implements RequestHandlerInterface
             } 
         }else if($rascunhoId != 0){
             if($assunto != null || $destinatario != null || $corpo != null){
+                unset($data['rascunhoId']);
                 
-                (new EndPointsRequest())->requestPut('rascunhos', json_encode($data));
+                (new EndPointsRequest())->requestPutId('rascunhos', (int)$rascunhoId, json_encode($data));
                 return new Response(200, ['Location' => '/']);
             }else{
                 return new Response(401, ["Location" => '/mail']);
             } 
         }else{
-            
             if($assunto != null || $destinatario != null || $corpo != null){
                 unset($data['rascunhoId']);
                 (new EndPointsRequest())->requestPost('rascunhos', json_encode($data));
